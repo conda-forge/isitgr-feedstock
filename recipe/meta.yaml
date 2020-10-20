@@ -1,5 +1,5 @@
 {% set name = "isitgr" %}
-{% set version = "1.0.2" %}
+{% set version = "19" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/mishakb/ISiTGR/archive/{{ version }}.tar.gz
-  sha256: ebf53b46ce3682a0154f3e713e8d320f5f7588fe1cb7a6fe5c9db8d1cad78b59
+  sha256: c369dd7a2cb5239f259dad433b7c860be1a9df97d5221284071493e4a1d6190a
 
 build:
-  number: 2
-  skip: True  # [py2k or win]
+  number: 0
+  skip: true  # [py2k or win]
 
 requirements:
   build:
@@ -47,7 +47,7 @@ about:
   license_file:
     - LICENSE
     - camb/LICENCE.txt
-  summary: Integrated Software in Testing General Relavitity (ISiTGR). A patch of camb to add MG predictions. 
+  summary: Integrated Software in Testing General Relavitity (ISiTGR). A patch of camb to add MG predictions.
   dev_url: https://github.com/mishakb/ISiTGR
 
 extra:
