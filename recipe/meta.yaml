@@ -10,12 +10,13 @@ source:
   sha256: ebf53b46ce3682a0154f3e713e8d320f5f7588fe1cb7a6fe5c9db8d1cad78b59
 
 build:
-  number: 4
+  number: 5
   skip: True  # [py2k or win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
     - git
     - make
