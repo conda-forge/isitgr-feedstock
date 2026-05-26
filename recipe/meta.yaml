@@ -1,16 +1,16 @@
 {% set name = "isitgr" %}
-{% set version = "1.0.2" %}
+{% set version = "1.0.2+23.g6281234" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/mishakb/ISiTGR/archive/{{ version }}.tar.gz
-  sha256: ebf53b46ce3682a0154f3e713e8d320f5f7588fe1cb7a6fe5c9db8d1cad78b59
+  url: https://github.com/mishakb/ISiTGR/archive/master.tar.gz
+  sha256: f70d6ec98ba0e1c10fdff3a9cc9edbea1b8d600205be52d8e0710973314c4e10
 
 build:
-  number: 4
+  number: 0
   skip: True  # [py2k or win]
 
 requirements:
