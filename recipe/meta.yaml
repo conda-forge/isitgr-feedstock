@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [py2k or win]
+  skip: True  # [py<310 or win]
 
 requirements:
   build:
@@ -25,7 +25,9 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
+    - setuptools >=77
+    - packaging >=24.2
+    - wheel
   run:
     - python
     - numpy
