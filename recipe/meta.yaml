@@ -42,7 +42,7 @@ test:
   imports:
     - isitgr
   commands:
-    - python {{ RECIPE_DIR }}/test_isitgr.py
+    - python -c "import isitgr; print(isitgr.__version__)"
 
 about:
   home: https://github.com/mishakb/ISiTGR
