@@ -23,16 +23,16 @@ requirements:
     - ${{ stdlib("c") }}
     - git
     - make
+    - if: osx
+      then: llvm-openmp
+    - if: linux
+      then: libgomp
   host:
     - python
     - pip
     - setuptools >=77
     - packaging >=24.2
     - wheel
-    - if: osx
-      then: llvm-openmp
-    - if: linux
-      then: libgomp
   run:
     - python
     - numpy
