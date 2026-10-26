@@ -20,14 +20,14 @@ requirements:
     - {{ stdlib("c") }}
     - git
     - make
-    - llvm-openmp  # [osx]
-    - libgomp      # [linux]
   host:
     - python
     - pip
     - setuptools >=77
     - packaging >=24.2
     - wheel
+    - llvm-openmp  # [osx]
+    - libgomp      # [linux]
   run:
     - python
     - numpy
