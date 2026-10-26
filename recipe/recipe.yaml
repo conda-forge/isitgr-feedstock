@@ -11,6 +11,8 @@ package:
 source:
   url: https://pypi.org/packages/source/i/isitgr/isitgr-${{ version }}.tar.gz
   sha256: 87890cd59c7befa5d244dee6598ef6ceccd099210dd86547951cf87b682fe366
+  patches:
+    - 0000-no-static-linkage.patch
 
 build:
   number: 2
@@ -23,16 +25,16 @@ requirements:
     - ${{ stdlib("c") }}
     - git
     - make
-    - if: osx
-      then: llvm-openmp
-    - if: linux
-      then: libgomp
   host:
     - python
     - pip
     - setuptools >=77
     - packaging >=24.2
     - wheel
+    - if: osx
+      then: llvm-openmp
+    - if: linux
+      then: libgomp
   run:
     - python
     - numpy
