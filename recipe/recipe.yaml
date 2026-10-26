@@ -1,0 +1,68 @@
+schema_version: 1
+
+context:
+  name: isitgr
+  version: "1.6.5"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/i/isitgr/isitgr-${{ version }}.tar.gz
+  sha256: 87890cd59c7befa5d244dee6598ef6ceccd099210dd86547951cf87b682fe366
+  patches:
+    - 0000-no-static-linkage.patch
+
+build:
+  number: 2
+  skip: match(python, "<3.10") or win
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('fortran') }}
+    - ${{ stdlib("c") }}
+    - git
+    - make
+  host:
+    - python
+    - pip
+    - setuptools >=77
+    - packaging >=24.2
+    - wheel
+    - if: osx
+      then: llvm-openmp
+    - if: linux
+      then: libgomp
+  run:
+    - python
+    - numpy
+    - six  # TODO: remove for next update
+    - mock
+    - setuptools  # for an import of pkg_resources
+    - sympy >=1.0
+    - scipy >=1.0
+    - if: not win
+      then: ${{ compiler('fortran') }}
+
+tests:
+  - python:
+      imports:
+        - isitgr
+      pip_check: false
+  - script:
+      - python -c "import isitgr; print(isitgr.__version__)"
+
+about:
+  license: MIT AND GPL-3.0-or-later
+  license_file: LICENCE.txt
+  summary: Integrated Software in Testing General Relativity (ISiTGR). A patch of CAMB to add MG predictions.
+  homepage: https://github.com/mishakb/ISiTGR
+  repository: https://github.com/mishakb/ISiTGR
+
+extra:
+  recipe-maintainers:
+    - gqcristhian
+    - mishakb
+    - Lhior

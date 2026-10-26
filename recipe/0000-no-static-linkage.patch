@@ -1,0 +1,26 @@
+From 6de68643131dfb51c5380207339ce29ae55422a7 Mon Sep 17 00:00:00 2001
+From: "Matthew R. Becker" <beckermr@users.noreply.github.com>
+Date: Mon, 26 Oct 2026 15:08:30 -0500
+Subject: [PATCH] fix: remove static linking flags
+
+---
+ fortran/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/fortran/Makefile b/fortran/Makefile
+index 5b3c12f..ea38f70 100644
+--- a/fortran/Makefile
++++ b/fortran/Makefile
+@@ -99,9 +99,9 @@ ifeq ($(shell uname -s),Darwin)
+ SFFLAGS = -dynamiclib #-fpic
+ ifneq ($(shell echo $(compiler_ver) | awk '{print ($$1 >= 14.0)}'),0)
+ LIBGFORTRAN_A := $(shell $(F90C) -print-file-name=libgfortran.a)
+-ifneq ($(shell [ -f "$(LIBGFORTRAN_A)" ] && echo yes),)
+-SFFLAGS += -static-libgfortran -static-libquadmath -static-libgcc
+-endif
++# ifneq ($(shell [ -f "$(LIBGFORTRAN_A)" ] && echo yes),)
++# SFFLAGS += -static-libgfortran -static-libquadmath -static-libgcc
++# endif
+ endif
+ else
+ SFFLAGS = -shared -fpic
