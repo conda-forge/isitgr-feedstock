@@ -15,7 +15,7 @@ source:
     - 0000-no-static-linkage.patch
 
 build:
-  number: 2
+  number: 3
   skip: match(python, "<3.10") or win
 
 requirements:
